@@ -19,20 +19,20 @@ $end_xml = '?>';
 ?>
 <?php echo $start_xml ?>xml version="1.0" encoding="UTF-8"<?php echo $end_xml ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc><?php echo $http_host ?></loc></url>
-  <url><loc><?php echo $http_host ?>/category</loc></url>
+  <url><loc><?php echo $home->url(); ?></loc></url>
+  <url><loc><?php echo $home->url(); ?>/category</loc></url>
   <?php
   foreach ($QuerySQL->select_table_data('category', 'id', 'asc') as $cat) {
       ?>
       <url>
-          <loc><?php echo $http_host ?>/category/<?php echo $cat['id'] . '-' . $cat['slug'] ?>.html</loc>
+          <loc><?php echo $home->url(); ?>/category/<?php echo $cat['id'] . '-' . $cat['slug'] ?>.html</loc>
       </url>
       <?php
   }
   foreach ($QuerySQL->select_table_data('blog', 'id', 'asc') as $blog) {
       ?>
       <url>
-          <loc><?php echo $http_host ?>/view/<?php echo $blog['id'] . '-' . $blog['slug'] ?>.html</loc>
+          <loc><?php echo $home->url(); ?>/view/<?php echo $blog['id'] . '-' . $blog['slug'] ?>.html</loc>
           <lastmod><?php echo date('c', $blog['time']) ?></lastmod>
       </url>
       <?php
