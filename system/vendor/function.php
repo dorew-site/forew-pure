@@ -333,8 +333,7 @@ $home = new class
                         }
                         break;
                     case 2:
-                        $text = $short_url;
-                        $url = '/redirect?url=' . rawurlencode($url);
+                        $text = $url;
                         break;
                     case 4:
                         $text = $short_url;
