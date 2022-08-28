@@ -101,7 +101,7 @@ if ($blog['id'] >= 1) {
     }
 
     // Cùng chuyên mục
-    $same_cat_query = mysqli_query($db, 'SELECT * FROM $db WHERE `category` = ' . $blog['category'] . ' AND `id` != ' . $blog['id'] . ' ORDER BY rand() LIMIT 5');
+    $same_cat_query = mysqli_query($db, 'SELECT * FROM blog WHERE `category` = ' . $blog['category'] . ' AND `id` != ' . $blog['id'] . ' ORDER BY rand() LIMIT 5');
     $same_cat = [];
     while ($row = mysqli_fetch_assoc($same_cat_query)) {
         $same_cat[] = $row;
