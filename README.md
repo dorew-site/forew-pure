@@ -1,0 +1,2 @@
+# forew-pure
+Simple Blog
