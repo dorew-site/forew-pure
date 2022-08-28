@@ -1,0 +1,26 @@
+ErrorDocument 402 /error.html
+ErrorDocument 403 /error.html
+ErrorDocument 404 /error.html
+ErrorDocument 500 /error.html
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Bài viết và chuyên mục
+RewriteRule ^search$ template/search.php [L]
+RewriteRule ^search/(.*)$ template/search.php [L]
+RewriteRule ^category$ template/category.php [L]
+RewriteRule ^category/(.*)$ template/category.php?id=$1 [L]
+RewriteRule ^blog/([0-9]+)-(.*)$ template/category.php?id=$1 [L]
+RewriteRule ^view/([0-9]+)-(.*)$ template/view.php?id=$1 [L]
+RewriteRule ^view/([0-9]+)/page-([0-9]+)$ template/view.php?id=$1&page=$2 [L]
+RewriteRule ^video-embed$ template/video-embed.php [L]
+
+# Quản lý blog
+RewriteRule ^manager$ template/manager.php [L]
+
+# Thông tin khác
+RewriteRule ^login$ template/login.php [L]
+RewriteRule ^sitemap.xml$ template/sitemap.php [L]
+RewriteRule ^robots.txt$ template/robots.txt [L]
+RewriteRule ^error.html$ template/error.php [L]
