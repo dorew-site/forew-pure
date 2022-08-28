@@ -1,2 +1,4 @@
 # forew-pure
-Simple Blog
+> Simple Blog
+
+Cấu hình: **/system/config.php**
