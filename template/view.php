@@ -69,12 +69,10 @@ if ($blog['id'] >= 1) {
             $file_url = 'https://' . $file['filecate'] . '.ipfs.ipfs-gateway.cloud/';
             $file_name = html_entity_decode($file['filename'], ENT_QUOTES, 'UTF-8');
             $file_size = $file['filesize'];
-            $file_cate = $file['filecate'];
-            $file_passphrase = $file['passphrase'];
-            if ($file_cate) {
+            if ($file['filecate']) {
     ?>
                 <div class="list1">
-                    <a onclick="downloadURL('<?php echo $file_name ?>', '<?php echo $file_cate ?>', '<?php echo $file_passphrase ?>', '<?php echo md5($file_cate . $file_passphrase) ?>')">
+                    <a href="<?php echo $file_url; ?>">
                         <table style="table-layout:fixed">
                             <tbody>
                                 <tr>
@@ -91,7 +89,6 @@ if ($blog['id'] >= 1) {
                                                 / <i class="fa fa-trash-o" aria-hidden="true"></i> <a href="/manager?act=file&type=delete&id=<?php echo $file['id'] ?>">Xoá</a>
                                             <?php } ?>
                                         </small>
-                                        <small id="dl<?php echo md5($file_cate . $file_passphrase) ?>"></small>
                                     </td>
                                 </tr>
                             </tbody>
@@ -101,9 +98,6 @@ if ($blog['id'] >= 1) {
         <?php
             }
         }
-        ?>
-        <script src="/assets/js/ipfs.download.js?t=<?php echo date('U') ?>"></script>
-    <?php
     }
 
     // Cùng chuyên mục
@@ -113,7 +107,7 @@ if ($blog['id'] >= 1) {
         $same_cat[] = $row;
     }
     if (count($same_cat) > 0) {
-    ?>
+        ?>
         <div class="phdr" style="font-weight:700">Cùng chuyên mục</div>
         <?php
         foreach ($same_cat as $row) {
@@ -138,7 +132,7 @@ if ($blog['id'] >= 1) {
     if ($page >= $page_max) $page = $page_max;
     if ($page < 1) $page = 1;
     $start = ($page - 1) * $per;
-    $comment_list = $QuerySQL->query_select_table('comment', '*', 'WHERE `blog` = ' . $blog['id'] . ' ORDER BY `id` DESC LIMIT ' . $start . ',' . $per);
+    $comment_list = $QuerySQL->query_select_table('comment','*','WHERE `blog` = ' . $blog['id'] . ' ORDER BY `id` DESC LIMIT ' . $start . ',' . $per);
     if ($QuerySQL->get_row_count('comment', ['blog' => $blog['id'], 'operator' => '=']) > 0) {
         foreach ($comment_list as $comment) {
             if (strlen($comment['author']) > 3) {

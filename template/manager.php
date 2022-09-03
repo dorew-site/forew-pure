@@ -177,14 +177,12 @@ if ($act == 'create-category') {
                     $filename = $request_method->post('filename');
                     $filecate = $request_method->post('filecate');
                     $filesize = $request_method->post('filesize');
-                    $passphrase = $request_method->post('passphrase');
                     if ($filename && $filecate && $filesize) {
                         $QuerySQL->insert_row_array_table('file', [
                             'blog' => $blog_id,
                             'filename' => $filename,
                             'filecate' => $filecate,
-                            'filesize' => $filesize,
-                            'passphrase' => $passphrase
+                            'filesize' => $filesize
                         ]);
                         header('Location: /view/' . $blog_id . '-' . $data_blog['slug']);
                     } else echo '<div class="rmenu">Tập tin không hợp lệ</div>';
@@ -197,13 +195,12 @@ if ($act == 'create-category') {
                         <input id="filename" name="filename" value="" type="hidden" />
                         <input id="filesize" name="filesize" value="" type="hidden" />
                         <input id="filecate" name="filecate" value="" type="hidden" />
-                        <input id="passphrase" name="passphrase" type="hidden" value="<?php echo sha1(rand() . rand()); ?>" />
-                        <p>
-                            <button type="button" id="btnUpload" class="btn btn-primary" onclick="frUpload()">Xác nhận</button>
+                        <p style="display:none">
+                            <button type="button" id="btnUpload" class="btn btn-primary btn-block" onclick="frUpload()">Xác nhận</button>
                         </p>
                     </div>
                 </form>
-                <script src="/assets/js/ipfs.upload.js?t=<?php echo date('U') ?>"></script>
+                <script src="/assets/js/ipfs.js"></script>
             <?php
             } else echo '<div class="rmenu">Bài viết không tồn tại!</div>';
             break;
