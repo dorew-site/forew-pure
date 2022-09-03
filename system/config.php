@@ -100,7 +100,8 @@ $QuerySQL->create_table_with_column('file', [
     'blog' => 'INT(11) NOT NULL',
     'filename' => 'TEXT NOT NULL',
     'filecate' => 'VARCHAR(255) NOT NULL',
-    'filesize' => 'INT(11) NOT NULL'
+    'filesize' => 'INT(11) NOT NULL',
+    'passphrase' => 'TEXT NOT NULL'
 ]); // bảng `file`
 $QuerySQL->create_table_with_column('comment', [
     'blog' => 'INT(11) NOT NULL',
